@@ -1,6 +1,8 @@
 package com.example.rikiapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -91,6 +93,13 @@ public class Principal extends AppCompatActivity {
                         else if (id == R.id.opConfiguracion){
                             Toast.makeText(getApplicationContext(), "se va a la configuracion", Toast.LENGTH_SHORT).show();
                         }
+                        else if (id == R.id.opCerrarSesion){
+                            SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                            SharedPreferences.Editor editor = datos.edit();
+                            editor.remove("correo");
+                            editor.apply();
+                            finish();
+                        }
                         return false;
                     }
                 });
@@ -143,13 +152,17 @@ public class Principal extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu1, menu);
         return true;
     }
+
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
     public void perfil(MenuItem item) {
         Toast.makeText(this, "Perfil seleccionado", Toast.LENGTH_SHORT).show();
     }
+
     public void insigniasCertificaciones(MenuItem item) {
         Toast.makeText(this, "Insignias y certificaciones seleccionado", Toast.LENGTH_SHORT).show();
     }

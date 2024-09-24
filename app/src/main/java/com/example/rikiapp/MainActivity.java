@@ -1,6 +1,7 @@
 package com.example.rikiapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -9,8 +10,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -45,6 +48,17 @@ public void login(View v) {
 
         // Validar si el correo y la contraseña son correctos
         if (correoSTR.equals("admin") && contraseniaSTR.equals("admin")) {
+
+            CheckBox cbRecuerdame = (CheckBox) findViewById(R.id.cbRecuerdame);
+            boolean chequeado = cbRecuerdame.isChecked();
+            if(chequeado == true){
+                SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = datos.edit();
+                editor.putString("correo", correoSTR);
+                editor.apply();
+            }
+
+
             Intent intent = new Intent(this, Principal.class); // Aquí redirecciono a la pantalla
             startActivity(intent);
         } else {
@@ -61,6 +75,18 @@ public void login(View v) {
     public void crearCuenta(View v) {
         Intent intent = new Intent(this, RegistrarCuenta.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(this);
+        String correo = datos.getString("correo", "");
+
+        if(!correo.equals("")){
+            Intent i = new Intent(this, Principal.class);
+            startActivity(i);
+        }
     }
 
     public void insigniasCertificaciones(View v) {

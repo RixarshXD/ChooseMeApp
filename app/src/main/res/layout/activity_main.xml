@@ -38,18 +38,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="36dp"
         android:width="400dp"
         android:onClick="login"
         android:text="@string/btn_login"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contrasenia" />
+        app:layout_constraintTop_toBottomOf="@+id/cbRecuerdame" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="13dp"
         android:clickable="true"
         android:onClick="crearCuenta"
         android:text="@string/text_singup"
@@ -66,5 +65,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <CheckBox
+        android:id="@+id/cbRecuerdame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="@string/recuerdame"
+        app:layout_constraintEnd_toEndOf="@+id/contrasenia"
+        app:layout_constraintTop_toBottomOf="@+id/contrasenia" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

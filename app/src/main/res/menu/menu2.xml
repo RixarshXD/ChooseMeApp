@@ -22,4 +22,7 @@
     <item
         android:id="@+id/opConfiguracion"
         android:title="@string/Configuracion" />
+    <item
+        android:id="@+id/opCerrarSesion"
+        android:title="@string/Cerrar_Sesion" />
 </menu>
