@@ -153,7 +153,5 @@ public class Principal extends AppCompatActivity {
     public void insigniasCertificaciones(MenuItem item) {
         Toast.makeText(this, "Insignias y certificaciones seleccionado", Toast.LENGTH_SHORT).show();
     }
-
-
 }
 
