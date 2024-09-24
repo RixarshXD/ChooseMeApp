@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +48,8 @@ public class Inicio extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +62,33 @@ public class Inicio extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_inicio, container, false);
+        LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
+
+        String[][] publicaciones = {
+            {"Publicaion1", "Voluntariado para limpiar la playa"},
+            {"Publicaion2", "Voluntariado para limpiar el parque"},
+            {"Publicaion3", "Voluntariado para limpiar la ciudad"},
+            {"Publicaion4", "Voluntariado para limpiar la montaña"},
+            {"Publicaion5", "Voluntariado para limpiar el bosque"},
+            {"Publicaion6", "Voluntariado para limpiar el río"},
+            {"Publicaion7", "Voluntariado para limpiar el lago"},
+            {"Publicaion8", "Voluntariado para limpiar el mar"},
+            {"Publicaion9", "Voluntariado para limpiar el océano"},
+            {"Publicaion10", "Voluntariado para limpiar el planeta"}
+
+        };
+
+        for (String[] publicacion : publicaciones){
+            TextView textView = new TextView(getContext());
+            textView.setText(publicacion[0] + " " + publicacion[1]);
+            textView.setTextSize(18);
+            textView.setPadding(0, 16, 0, 16);
+            linearLayout.addView(textView);
+        }
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_inicio, container, false);
+        return view;
     }
 }

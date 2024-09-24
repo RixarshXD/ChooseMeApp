@@ -76,22 +76,22 @@ public class Principal extends AppCompatActivity {
                         //recuperar opciones del menu lateral
                         int id = item.getItemId(); // recupera el id del item seleccionado
                         if (id == R.id.opInicio){
-                            Toast.makeText(getApplicationContext(), "se va a la inicio", Toast.LENGTH_SHORT).show();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Inicio()).commit();
                         }
                         else if (id == R.id.opPerfil){
-                            Toast.makeText(getApplicationContext(), "se va a la perfil", Toast.LENGTH_SHORT).show();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Perfil()).commit();
                         }
                         else if (id == R.id.opPuestos){
                             Toast.makeText(getApplicationContext(), "se va a la puestos", Toast.LENGTH_SHORT).show();
                         }
                         else if (id == R.id.opOrganizaciones) {
-                            Toast.makeText(getApplicationContext(), "se va a la organizaciones", Toast.LENGTH_SHORT).show();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Organizaciones()).commit();
                         }
                         else if (id == R.id.opInsignias){
                             Toast.makeText(getApplicationContext(), "se va a la insignias", Toast.LENGTH_SHORT).show();
                         }
                         else if (id == R.id.opConfiguracion){
-                            Toast.makeText(getApplicationContext(), "se va a la configuracion", Toast.LENGTH_SHORT).show();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Configuraciones()).commit();
                         }
                         else if (id == R.id.opCerrarSesion){
                             SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -100,7 +100,10 @@ public class Principal extends AppCompatActivity {
                             editor.apply();
                             finish();
                         }
-                        return false;
+                        //eliminar en caso de errores
+                        DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.Principal);
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        return true;
                     }
                 });
             }

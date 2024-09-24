@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "575028218131",
+    "project_id": "app-movil-8d59e",
+    "storage_bucket": "app-movil-8d59e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575028218131:android:9085384bccf5f18fa872e6",
+        "android_client_info": {
+          "package_name": "com.example.rikiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAiKYj_c6CXDINmxADBAYWjpH7m6mumV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
