@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayaout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Inicio" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabNuevo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Nuevo" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabInformacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/information" />
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabPerfil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile" />
+
+    </com.google.android.material.tabs.TabLayout>
+</LinearLayout>

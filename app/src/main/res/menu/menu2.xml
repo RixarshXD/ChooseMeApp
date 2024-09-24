@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/opInicio"
+        android:title="@string/Inicio" />
+    <item
+        android:id="@+id/opPerfil"
+        android:onClick="perfil"
+        android:title="@string/mi_perfil" />
+    <item
+        android:id="@+id/opPuestos"
+        android:title="@string/Puestos" />
+    <item
+        android:id="@+id/opOrganizaciones"
+        android:onClick="insigniasCertificaciones"
+        android:title="@string/Organizaciones" />
+    <item
+        android:id="@+id/opInsignias"
+        android:onClick="insigniasCertificaciones"
+        android:title="@string/Insignias" />
+    <item
+        android:id="@+id/opConfiguracion"
+        android:title="@string/Configuracion" />
+</menu>
