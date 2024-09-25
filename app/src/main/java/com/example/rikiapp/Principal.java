@@ -1,5 +1,6 @@
 package com.example.rikiapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -78,14 +79,8 @@ public class Principal extends AppCompatActivity {
                         if (id == R.id.opInicio){
                             getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Inicio()).commit();
                         }
-                        else if (id == R.id.opPerfil){
-                            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Perfil()).commit();
-                        }
                         else if (id == R.id.opPuestos){
                             Toast.makeText(getApplicationContext(), "se va a la puestos", Toast.LENGTH_SHORT).show();
-                        }
-                        else if (id == R.id.opOrganizaciones) {
-                            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Organizaciones()).commit();
                         }
                         else if (id == R.id.opInsignias){
                             Toast.makeText(getApplicationContext(), "se va a la insignias", Toast.LENGTH_SHORT).show();
@@ -163,11 +158,12 @@ public class Principal extends AppCompatActivity {
     }
 
     public void perfil(MenuItem item) {
-        Toast.makeText(this, "Perfil seleccionado", Toast.LENGTH_SHORT).show();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Perfil()).commit();
     }
 
     public void insigniasCertificaciones(MenuItem item) {
-        Toast.makeText(this, "Insignias y certificaciones seleccionado", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, InsigniasCertificaciones.class);
+        startActivity(intent);
     }
 }
 

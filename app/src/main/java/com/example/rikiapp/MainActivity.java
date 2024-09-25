@@ -99,4 +99,10 @@ public void login(View v) {
         startActivity(i);
     }
 
+    public void OlvidarCuenta(View view) {
+        Intent i = new Intent(this, OlvidarCuenta.class);
+        startActivity(i);
+    }
+
+
 }

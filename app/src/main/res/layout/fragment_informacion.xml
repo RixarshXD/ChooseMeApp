@@ -6,9 +6,21 @@
     tools:context=".Informacion">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/linearLayoutInformacion"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/information" />
+        android:orientation="vertical">
+
+        <!-- Otros elementos dentro del LinearLayout -->
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/information" />
+    </LinearLayout>
 
 </FrameLayout>

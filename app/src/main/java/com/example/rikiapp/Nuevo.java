@@ -3,10 +3,14 @@ package com.example.rikiapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,7 +62,46 @@ public class Nuevo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nuevo, container, false);
+        View view = inflater.inflate(R.layout.fragment_nuevo, container, false);
+
+        Button compartirButton = view.findViewById(R.id.btnCompartir);
+        compartirButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String[][] textos = getTextViewsContent();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("publicaciones", textos);
+
+                Inicio inicioFragment = new Inicio();
+                inicioFragment.setArguments(bundle);
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.contenedor, inicioFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        return view;
+    }
+
+    public String[][] getTextViewsContent() {
+        View view = getView();
+        if (view == null) return new String[0][0];
+
+        LinearLayout linearLayout = view.findViewById(R.id.linearLayoutInformacion);
+        int childCount = linearLayout.getChildCount();
+        String[][] textos = new String[childCount][2];
+
+        for (int i = 0; i < childCount; i++) {
+            View child = linearLayout.getChildAt(i);
+            if (child instanceof TextView) {
+                TextView textView = (TextView) child;
+                textos[i][0] = "Publicacion" + (i + 1);
+                textos[i][1] = textView.getText().toString();
+            }
+        }
+        return textos;
     }
 }
+
