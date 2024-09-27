@@ -77,7 +77,6 @@ public class Inicio extends Fragment {
             {"Publicaion8", "Voluntariado para limpiar el mar"},
             {"Publicaion9", "Voluntariado para limpiar el océano"},
             {"Publicaion10", "Voluntariado para limpiar el planeta"}
-
         };
 
         for (String[] publicacion : publicaciones){
