@@ -1,93 +1,76 @@
+// Inicio.java
 package com.example.rikiapp;
 
+import android.net.Uri;
 import android.os.Bundle;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Inicio#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Inicio extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private ArrayList<Bundle> imageDataList;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public Inicio() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Inicio.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Inicio newInstance(String param1, String param2) {
-        Inicio fragment = new Inicio();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-
-
+    @Nullable
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_inicio, container, false);
-        LinearLayout linearLayout = view.findViewById(R.id.linearLayout);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
 
-        String[][] publicaciones = {
-            {"Publicaion1", "Voluntariado para limpiar la playa"},
-            {"Publicaion2", "Voluntariado para limpiar el parque"},
-            {"Publicaion3", "Voluntariado para limpiar la ciudad"},
-            {"Publicaion4", "Voluntariado para limpiar la montaña"},
-            {"Publicaion5", "Voluntariado para limpiar el bosque"},
-            {"Publicaion6", "Voluntariado para limpiar el río"},
-            {"Publicaion7", "Voluntariado para limpiar el lago"},
-            {"Publicaion8", "Voluntariado para limpiar el mar"},
-            {"Publicaion9", "Voluntariado para limpiar el océano"},
-            {"Publicaion10", "Voluntariado para limpiar el planeta"}
-        };
-
-        for (String[] publicacion : publicaciones){
-            TextView textView = new TextView(getContext());
-            textView.setText(publicacion[0] + " " + publicacion[1]);
-            textView.setTextSize(18);
-            textView.setPadding(0, 16, 0, 16);
-            linearLayout.addView(textView);
+        if (getArguments() != null) {
+            imageDataList = getArguments().getParcelableArrayList("imageDataList");
+        } else {
+            imageDataList = new ArrayList<>();
         }
 
-        // Inflate the layout for this fragment
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setAdapter(new RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+            @NonNull
+            @Override
+            public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.image_list_item, parent, false);
+                return new ViewHolder(itemView);
+            }
+
+            @Override
+            public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+                ViewHolder viewHolder = (ViewHolder) holder;
+                Bundle bundle = imageDataList.get(position);
+                viewHolder.titleTextView.setText(bundle.getString("title"));
+                viewHolder.descriptionTextView.setText(bundle.getString("description"));
+                viewHolder.locationTextView.setText(bundle.getString("location"));
+                viewHolder.detailsTextView.setText(bundle.getString("details"));
+                viewHolder.imageView.setImageURI((Uri) bundle.getParcelable("imageUri"));
+            }
+
+            @Override
+            public int getItemCount() {
+                return imageDataList.size();
+            }
+
+            class ViewHolder extends RecyclerView.ViewHolder {
+                TextView titleTextView, descriptionTextView, locationTextView, detailsTextView;
+                ImageView imageView;
+
+                ViewHolder(@NonNull View itemView) {
+                    super(itemView);
+                    titleTextView = itemView.findViewById(R.id.titleTextView);
+                    descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
+                    locationTextView = itemView.findViewById(R.id.locationTextView);
+                    detailsTextView = itemView.findViewById(R.id.detailsTextView);
+                    imageView = itemView.findViewById(R.id.imageView);
+                }
+            }
+        });
+
         return view;
     }
 }

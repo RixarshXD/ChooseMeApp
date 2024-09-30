@@ -13,7 +13,6 @@
         android:title="@string/Puestos" />
     <item
         android:id="@+id/opOrganizaciones"
-        android:onClick="insigniasCertificaciones"
         android:title="@string/Organizaciones" />
     <item
         android:id="@+id/opInsignias"

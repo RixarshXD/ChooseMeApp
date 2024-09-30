@@ -11,6 +11,7 @@
     <string name="btn_login">Iniciar Sesión</string>
     <string name="btn_forgot_password">¿Olvidaste tu contraseña?</string>
     <string name="btn_recuperar_contrasenia">Recuperar Contraseña</string>
+    <string name="seleccionar_imagen">Seleccionar Imagen</string>
 
 
     <string name="text_singup">Crear una Cuenta</string>

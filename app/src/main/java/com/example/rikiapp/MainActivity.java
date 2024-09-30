@@ -60,6 +60,7 @@ public void login(View v) {
 
 
             Intent intent = new Intent(this, Principal.class); // Aquí redirecciono a la pantalla
+            intent.putExtra("showInicio",true);
             startActivity(intent);
         } else {
             Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT).show();

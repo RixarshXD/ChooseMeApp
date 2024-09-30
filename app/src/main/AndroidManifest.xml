@@ -13,6 +13,12 @@
         android:theme="@style/Theme.RikiApp"
         tools:targetApi="31">
         <activity
+            android:name=".SharedViewModel"
+            android:exported="false" />
+        <activity
+            android:name=".viewModel"
+            android:exported="false" />
+        <activity
             android:name=".InsigniasCertificaciones"
             android:exported="false" />
         <activity
