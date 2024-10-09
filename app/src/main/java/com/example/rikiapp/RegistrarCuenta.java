@@ -1,8 +1,10 @@
 package com.example.rikiapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -46,6 +48,17 @@ public class RegistrarCuenta extends AppCompatActivity {
         String tienesExperienciaComoVoluntario = etTienesExperienciaComoVoluntario.getText().toString();
 
         //validar que los campos no esten vacios
-
+        if (nombre.isEmpty() || apellido.isEmpty() || email.isEmpty() || contrasenia.isEmpty() || numeroTelefonico.isEmpty() ||
+                cuentanosSobreTi.isEmpty() || queTeAtrajoaSerVoluntario.isEmpty() || tienesExperienciaComoVoluntario.isEmpty()) {
+            //mostrar mensaje de error
+            Toast toast = Toast.makeText(this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT);
+        } else {
+            // pasar los datos a perfil
+            Intent i = new Intent(this, Perfil.class);
+            i.putExtra("nombre", nombre);
+            i.putExtra("apellido", apellido);
+            i.putExtra("email", email);
+            startActivity(i);
+        }
     }
 }

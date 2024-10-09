@@ -6,31 +6,24 @@
     <string name="input_password">Contraseña</string>
     <string name="input_confirm_password">Confirmar Contraseña</string>
 
-
     <string name="btn_register">Registrarse</string>
     <string name="btn_login">Iniciar Sesión</string>
     <string name="btn_forgot_password">¿Olvidaste tu contraseña?</string>
     <string name="btn_recuperar_contrasenia">Recuperar Contraseña</string>
     <string name="seleccionar_imagen">Seleccionar Imagen</string>
 
-
     <string name="text_singup">Crear una Cuenta</string>
     <string name="text_login">Inicio de Sesion</string>
     <string name="olvidaste_contrasenia">Olvidaste la Contraseña?</string>
 
-    //strings menu bottombar
     <string name="profile">Perfil</string>
     <string name="information">Informacion</string>
     <string name="settings">Configuracion</string>
     <string name="Nuevo">Nuevo</string>
 
-
-    //
     <string name="Voluntarios">Voluntarios</string>
     <string name="Donaciones">Donaciones</string>
 
-
-    //strings menu lateral
     <string name="Inicio">Inicio</string>
     <string name="mi_perfil">Mi Perfil</string>
     <string name="Puestos">Puestos</string>
@@ -39,22 +32,18 @@
     <string name="Configuracion">Configuracion</string>
     <string name="Cerrar_Sesion">Cerrar Sesion</string>
 
-
     <string name="abrir_drawer">abrir menu</string>
     <string name="cerrar_drawer">cerrar menu</string>
     <string name="recuerdame">Recuerdame</string>
 
-
-    //nuevo post
     <string name="Titulo">Titulo</string>
     <string name="Descripcion">Descripcion</string>
     <string name="Ubicacion">Ubicacion</string>
     <string name="Detalles">Detalles</string>
     <string name="Compartir">Compartir</string>
 
-
     <string name="user">Usuario</string>
-
+    <string name="registrar_organizacion">Registrar_organizacion</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

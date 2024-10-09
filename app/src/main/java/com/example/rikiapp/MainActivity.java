@@ -105,5 +105,12 @@ public void login(View v) {
         startActivity(i);
     }
 
-
+    public void Puestos(View view) {
+        Intent i = new Intent(this, Puestos.class);
+        startActivity(i);
+    }
+    public void Organizaciones(View view) {
+        Intent i = new Intent(this, Organizaciones.class);
+        startActivity(i);
+    }
 }

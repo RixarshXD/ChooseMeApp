@@ -35,8 +35,6 @@ import java.util.ArrayList;
 
 
 public class Principal extends AppCompatActivity {
-    private ArrayList<Bundle> imageDataList = new ArrayList<>();
-    private ArrayList<String> dataList;
     private LinearLayout linearLayout;
 
     @Override
@@ -46,23 +44,13 @@ public class Principal extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
         linearLayout = findViewById(R.id.linearLayoutInformacion);
 
-        Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("data")) {
-            dataList = intent.getStringArrayListExtra("data");
-            updateUI();
-        }
-
-        if (intent != null && intent.getBooleanExtra("showInicio", false)) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Inicio()).commit();
-        }
 
         //referencia al toolbar
         Toolbar tb = findViewById(R.id.toolbar);
         setSupportActionBar(tb);
 
-
         //este es mi bottombar
-        TabLayout tl = findViewById(R.id.tabLayaout);
+        TabLayout tl = findViewById(R.id.navbottom);
         tl.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -98,10 +86,8 @@ public class Principal extends AppCompatActivity {
             } else if(id == R.id.opOrganizaciones){
                 getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Organizaciones()).commit();
             }else if (id == R.id.opPuestos) {
-                Toast.makeText(getApplicationContext(), "se va a la puestos", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.opInsignias) {
-                Toast.makeText(getApplicationContext(), "se va a la insignias", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.opConfiguracion) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Puestos()).commit();
+            }else if (id == R.id.opConfiguracion) {
                 getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, new Configuraciones()).commit();
             } else if (id == R.id.opCerrarSesion) {
                 SharedPreferences datos = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -141,32 +127,6 @@ public class Principal extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-
-
-
-    private void updateUI() {
-
-        LinearLayout linearLayout = findViewById(R.id.linearLayout);
-        linearLayout.removeAllViews();
-        for (Bundle bundle : imageDataList) {
-            View itemView = getLayoutInflater().inflate(R.layout.image_list_item, linearLayout, false);
-
-            TextView titleTextView = itemView.findViewById(R.id.titleTextView);
-            TextView descriptionTextView = itemView.findViewById(R.id.descriptionTextView);
-            TextView locationTextView = itemView.findViewById(R.id.locationTextView);
-            TextView detailsTextView = itemView.findViewById(R.id.detailsTextView);
-            ImageView imageView = itemView.findViewById(R.id.imageView);
-
-            titleTextView.setText(bundle.getString("title"));
-            descriptionTextView.setText(bundle.getString("description"));
-            locationTextView.setText(bundle.getString("location"));
-            detailsTextView.setText(bundle.getString("details"));
-            imageView.setImageURI((Uri) bundle.getParcelable("imageUri"));
-
-            linearLayout.addView(itemView);
-        }
     }
 
     @Override

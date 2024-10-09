@@ -1,3 +1,4 @@
+// Nuevo.java
 package com.example.rikiapp;
 
 import android.content.Intent;
@@ -7,7 +8,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-
 
 public class Nuevo extends Fragment {
 
@@ -39,7 +39,7 @@ public class Nuevo extends Fragment {
         Button uploadButton = view.findViewById(R.id.btnCompartir);
         Button selectImageButton = view.findViewById(R.id.selectImageButton);
 
-        selectImageButton.setOnClickListener(v -> openFileChooser());
+        selectImageButton.setOnClickListener(v -> abrirImagen());
 
         uploadButton.setOnClickListener(v -> {
             String title = titleEditText.getText().toString();
@@ -47,27 +47,31 @@ public class Nuevo extends Fragment {
             String location = locationEditText.getText().toString();
             String details = detailsEditText.getText().toString();
 
-            Bundle bundle = new Bundle();
-            bundle.putString("title", title);
-            bundle.putString("description", description);
-            bundle.putString("location", location);
-            bundle.putString("details", details);
-            bundle.putParcelable("imageUri", imageUri);
+            if (title.isEmpty() || description.isEmpty() || location.isEmpty() || details.isEmpty() || imageUri == null) {
+                Toast.makeText(getContext(), "Llenar todos los campos para publicar", Toast.LENGTH_SHORT).show();
+            } else {
+                Bundle bundle = new Bundle();
+                bundle.putString("title", title);
+                bundle.putString("description", description);
+                bundle.putString("location", location);
+                bundle.putString("details", details);
+                bundle.putParcelable("imageUri", imageUri);
 
-            imageDataList.add(bundle);
+                imageDataList.add(bundle);
 
-            Inicio inicioFragment = new Inicio();
-            Bundle args = new Bundle();
-            args.putParcelableArrayList("imageDataList", imageDataList);
-            inicioFragment.setArguments(args);
+                Inicio inicioFragment = new Inicio();
+                Bundle args = new Bundle();
+                args.putParcelableArrayList("imageDataList", imageDataList);
+                inicioFragment.setArguments(args);
 
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, inicioFragment).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.contenedor, inicioFragment).commit();
+            }
         });
 
         return view;
     }
 
-    private void openFileChooser() {
+    private void abrirImagen() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
